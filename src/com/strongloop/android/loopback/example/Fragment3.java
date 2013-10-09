@@ -42,7 +42,7 @@ public class Fragment3 extends Fragment {
             
             @Override
             public void onClick(View v) {
-                findProductLowestInventory();
+                findLowestAudibleRange();
             }
         });
         
@@ -51,7 +51,7 @@ public class Fragment3 extends Fragment {
             
             @Override
             public void onClick(View v) {
-                findProductLowestPrice();
+                findHighestNumberOfRounds();
             }
         });
         
@@ -68,24 +68,23 @@ public class Fragment3 extends Fragment {
             adapter = new ModelAdapter<Model>(getActivity(), 
                     "http://10.0.2.2:3000");
             adapter.getContract().addItem(
-                    new RestContractItem("/products", "GET"), 
-                    "products.filter");
+                new RestContractItem("/weapons", "GET"),
+                    "weapons.findOne");
         }
         return adapter;
     }
     
     private ModelPrototype<Model> getPrototype() {
         if (prototype == null) {
-            prototype = getAdapter().createPrototype("products");
+            prototype = getAdapter().createPrototype("weapons");
         }
         return prototype;
     }
     
-    private void findProductLowestInventory() {
+    private void findLowestAudibleRange() {
         ModelPrototype<Model> prototype = getPrototype();
-        prototype.invokeStaticMethod("filter", 
-                ImmutableMap.of("filter[order]", "inventory ASC", 
-                        "filter[limit]", 1), 
+        prototype.invokeStaticMethod("findOne",
+                ImmutableMap.of("orderBy", "audibleRange ASC"),
                 new Adapter.JsonArrayCallback() {
             
             @Override
@@ -96,22 +95,21 @@ public class Fragment3 extends Fragment {
             @Override
             public void onSuccess(JSONArray response) {
                 JSONObject object = response.optJSONObject(0);
-                if (object == null) {
+               if (object == null) {
                     result1.setText("None");
                 }
                 else {
                     result1.setText(
-                        object.opt("name") + ": " + object.opt("inventory"));
+                        object.opt("name") + ": " + object.opt("audibleRange"));
                 }
             }
         });
     }
 
-    private void findProductLowestPrice() {
+    private void findHighestNumberOfRounds() {
         ModelPrototype<Model> prototype = getPrototype();
-        prototype.invokeStaticMethod("filter", 
-                ImmutableMap.of("filter[order]", "price ASC", 
-                        "filter[limit]", 1), 
+        prototype.invokeStaticMethod("findOne",
+                ImmutableMap.of("orderBy", "rounds DESC"),
                 new Adapter.JsonArrayCallback() {
             
             @Override
@@ -127,7 +125,7 @@ public class Fragment3 extends Fragment {
                 }
                 else {
                     result2.setText(
-                        object.opt("name") + ": $" + object.opt("price"));
+                        object.opt("name") + ": " + object.opt("rounds"));
                 }
             }
         });
