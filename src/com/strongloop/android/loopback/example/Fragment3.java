@@ -69,14 +69,14 @@ public class Fragment3 extends Fragment {
                     "http://10.0.2.2:3000");
             adapter.getContract().addItem(
                 new RestContractItem("/weapons", "GET"),
-                    "weapons.findOne");
+                    "weapon.findOne");
         }
         return adapter;
     }
     
     private ModelPrototype<Model> getPrototype() {
         if (prototype == null) {
-            prototype = getAdapter().createPrototype("weapons");
+            prototype = getAdapter().createPrototype("weapon");
         }
         return prototype;
     }
