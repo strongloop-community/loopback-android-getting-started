@@ -27,8 +27,6 @@ public class Fragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         
-        initializeServerWithData();
-        
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment1, 
                 container, false);
         
@@ -88,13 +86,13 @@ public class Fragment1 extends Fragment {
     
     private ModelPrototype<Model> getPrototype() {
         if (prototype == null) {
-            prototype = getAdapter().createPrototype("products");
+            prototype = getAdapter().createPrototype("weapons");
         }
         return prototype;
     }
     
     private void refresh() {
-        // Equivalent http JSON endpoint request: http://localhost:3000/products
+        // Equivalent http JSON endpoint request: http://localhost:3000/weapons
         ModelPrototype<Model> prototype = getPrototype();
         prototype.findAll(new ModelPrototype.FindAllCallback<Model>() {
 
@@ -113,7 +111,7 @@ public class Fragment1 extends Fragment {
     private void create() {
         ModelPrototype<Model> prototype = getPrototype();
         Model model = prototype.createModel(
-                ImmutableMap.of("name", "New Product", "inventory", 99));
+                ImmutableMap.of("name", "New Weapon", "effectiveRange", 99));
         model.save(new Model.Callback() {
             
             @Override
@@ -145,7 +143,7 @@ public class Fragment1 extends Fragment {
                             R.string.message_failure_find);
                 }
                 else {
-                    model.put("inventory", 66);
+                    model.put("effectiveRange", 22);
                     model.save(new Model.Callback() {
                         
                         @Override
@@ -198,48 +196,6 @@ public class Fragment1 extends Fragment {
         });
     }
     
-    private void initializeServerWithData() {
-        final ModelPrototype<Model> prototype = getPrototype();
-        prototype.findAll(new ModelPrototype.FindAllCallback<Model>() {
-
-            @Override
-            public void onError(Throwable t) {
-                MainActivity.showGuideMessage(getActivity(), t);
-            }
-            
-            @Override
-            public void onSuccess(List<Model> models) {
-                if (models.isEmpty()) {
-                    Model.Callback saveCallback = new Model.Callback() {
-                        
-                        @Override
-                        public void onSuccess() { }
-                        
-                        @Override
-                        public void onError(Throwable t) { }
-                        
-                    };
-                    
-                    prototype.createModel(ImmutableMap.of(
-                            "name", "Product A", 
-                            "inventory", 11,
-                            "price", 66.34))
-                            .save(saveCallback);
-                    prototype.createModel(ImmutableMap.of(
-                            "name", "Product B", 
-                            "inventory", 22,
-                            "price", 22.34))
-                            .save(saveCallback);
-                    prototype.createModel(ImmutableMap.of(
-                            "name", "Product C", 
-                            "inventory", 33,
-                            "price", 11.54))
-                            .save(saveCallback);
-                }
-            }
-        });
-    }
-    
     private static class ListAdapter extends ArrayAdapter<Model> {
         public ListAdapter(Context context, List<Model> list) {
             super(context, 0, list);
@@ -258,7 +214,7 @@ public class Fragment1 extends Fragment {
                 TextView textView = (TextView)convertView.findViewById(
                         android.R.id.text1);
                 textView.setText(
-                        model.get("name") + " - " + model.get("inventory"));
+                        model.get("name") + " - " + model.get("effectiveRange"));
             }
             return convertView;
         }

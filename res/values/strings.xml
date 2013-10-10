@@ -28,13 +28,13 @@
     <string name="Update">Update</string>
     <string name="Delete">Delete</string>
     
-    <string name="custom_method_1">Lowest Inventory</string>
-    <string name="custom_method_2">Lowest Price</string>
+    <string name="custom_method_1">Lowest Audible Range</string>
+    <string name="custom_method_2">Highest # of Rounds</string>
     
     <string name="message_success_init">Press \'Refresh\' to load the local ListView.</string>
     <string name="message_success_create">Congratulations, you created a model instance on the server. Press \'Refresh\' to update the local ListView.</string>
     <string name="message_success_update">Congratulations, you updated a model instance on the server. Press \'Refresh\' to update the local ListView.</string>
     <string name="message_success_delete">Congratulations, you deleted a model instance on the server. Press \'Refresh\' to update the local ListView.</string>
-    <string name="message_error_connection">It looks like your server isn\'t running. From the node-server folder start the server with\n\'slnode run app.js\'\nand try again.</string>
+    <string name="message_error_connection">It looks like your server isn\'t running. From the sls-sample-app folder start the server with\n\'slc run app.js\'\nand try again.</string>
     <string name="message_failure_find">Couldn\'t find model.</string>
 </resources>
