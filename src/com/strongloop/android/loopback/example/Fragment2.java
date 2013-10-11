@@ -94,7 +94,7 @@ public class Fragment2 extends Fragment {
     public static class AmmoPrototype extends ModelPrototype<Ammo> {
         
         public AmmoPrototype() {
-            super("ammo", Ammo.class);
+            super("ammo", "ammo", Ammo.class);
         }
     }
     
@@ -119,7 +119,7 @@ public class Fragment2 extends Fragment {
     }
     
     private void refresh() {
-        // Equivalent http JSON endpoint request : http://localhost:3000/cars
+        // Equivalent http JSON endpoint request : http://localhost:3000/ammo
         AmmoPrototype prototype = getPrototype();
         prototype.findAll(new ModelPrototype.FindAllCallback<Ammo>() {
 

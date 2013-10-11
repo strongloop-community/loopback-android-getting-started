@@ -86,7 +86,7 @@ public class Fragment1 extends Fragment {
     
     private ModelPrototype<Model> getPrototype() {
         if (prototype == null) {
-            prototype = getAdapter().createPrototype("weapons");
+            prototype = getAdapter().createPrototype("weapon");
         }
         return prototype;
     }
