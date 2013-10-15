@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.google.common.collect.ImmutableMap;
 import com.strongloop.android.loopback.Model;
 import com.strongloop.android.loopback.ModelAdapter;
-import com.strongloop.android.loopback.ModelPrototype;
+import com.strongloop.android.loopback.ModelRepository;
 
 public class Fragment1 extends Fragment {
     
@@ -72,7 +72,7 @@ public class Fragment1 extends Fragment {
     }
     
     private ModelAdapter<Model> adapter;
-    private ModelPrototype<Model> prototype;
+    private ModelRepository<Model> repository;
     
     public ModelAdapter<Model> getAdapter() {
         if (adapter == null) {
@@ -84,17 +84,17 @@ public class Fragment1 extends Fragment {
         return adapter;
     }
     
-    private ModelPrototype<Model> getPrototype() {
-        if (prototype == null) {
-            prototype = getAdapter().createPrototype("weapon");
+    private ModelRepository<Model> getRepository() {
+        if (repository == null) {
+            repository = getAdapter().createRepository("weapon");
         }
-        return prototype;
+        return repository;
     }
     
     private void refresh() {
         // Equivalent http JSON endpoint request: http://localhost:3000/weapons
-        ModelPrototype<Model> prototype = getPrototype();
-        prototype.findAll(new ModelPrototype.FindAllCallback<Model>() {
+        ModelRepository<Model> repository = getRepository();
+        repository.findAll(new ModelRepository.FindAllCallback<Model>() {
 
             @Override
             public void onSuccess(List<Model> models) {
@@ -109,8 +109,8 @@ public class Fragment1 extends Fragment {
     }
     
     private void create() {
-        ModelPrototype<Model> prototype = getPrototype();
-        Model model = prototype.createModel(
+        ModelRepository<Model> repository = getRepository();
+        Model model = repository.createModel(
                 ImmutableMap.of("name", "New Weapon", "effectiveRange", 99));
         model.save(new Model.Callback() {
             
@@ -128,8 +128,8 @@ public class Fragment1 extends Fragment {
     }
     
     private void update() {
-        ModelPrototype<Model> prototype = getPrototype();
-        prototype.findById(2, new ModelPrototype.FindCallback<Model>() {
+        ModelRepository<Model> repository = getRepository();
+        repository.findById(2, new ModelRepository.FindCallback<Model>() {
 
             @Override
             public void onError(Throwable t) {
@@ -163,8 +163,8 @@ public class Fragment1 extends Fragment {
     }
     
     private void delete() {
-        ModelPrototype<Model> prototype = getPrototype();
-        prototype.findById(2, new ModelPrototype.FindCallback<Model>() {
+        ModelRepository<Model> repository = getRepository();
+        repository.findById(2, new ModelRepository.FindCallback<Model>() {
 
             @Override
             public void onError(Throwable t) {

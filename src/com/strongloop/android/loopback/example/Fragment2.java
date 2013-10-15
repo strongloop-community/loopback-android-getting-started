@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.strongloop.android.loopback.Model;
 import com.strongloop.android.loopback.ModelAdapter;
-import com.strongloop.android.loopback.ModelPrototype;
+import com.strongloop.android.loopback.ModelRepository;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -91,15 +91,15 @@ public class Fragment2 extends Fragment {
         }
     }
     
-    public static class AmmoPrototype extends ModelPrototype<Ammo> {
+    public static class AmmoRepository extends ModelRepository<Ammo> {
         
-        public AmmoPrototype() {
+        public AmmoRepository() {
             super("ammo", "ammo", Ammo.class);
         }
     }
     
     private ModelAdapter<Ammo> adapter;
-    private AmmoPrototype prototype;
+    private AmmoRepository repository;
     
     public ModelAdapter<Ammo> getAdapter() {
         if (adapter == null) {
@@ -111,17 +111,17 @@ public class Fragment2 extends Fragment {
         return adapter;
     }
     
-    private AmmoPrototype getPrototype() {
-        if (prototype == null) {
-            prototype = getAdapter().createPrototype(AmmoPrototype.class);
+    private AmmoRepository getRepository() {
+        if (repository == null) {
+            repository = getAdapter().createRepository(AmmoRepository.class);
         }
-        return prototype;
+        return repository;
     }
     
     private void refresh() {
         // Equivalent http JSON endpoint request : http://localhost:3000/ammo
-        AmmoPrototype prototype = getPrototype();
-        prototype.findAll(new ModelPrototype.FindAllCallback<Ammo>() {
+        AmmoRepository repository = getRepository();
+        repository.findAll(new ModelRepository.FindAllCallback<Ammo>() {
 
             @Override
             public void onSuccess(List<Ammo> ammo) {
@@ -136,8 +136,8 @@ public class Fragment2 extends Fragment {
     }
     
     private void create() {
-        AmmoPrototype prototype = getPrototype();
-        Ammo model = prototype.createModel(null);
+        AmmoRepository repository = getRepository();
+        Ammo model = repository.createModel(null);
         model.setName("MP5 Milspec");
         model.setCaliber(9);
         model.save(new Model.Callback() {
@@ -156,8 +156,8 @@ public class Fragment2 extends Fragment {
     }
     
     private void update() {
-        AmmoPrototype prototype = getPrototype();
-        prototype.findById(1, new ModelPrototype.FindCallback<Ammo>() {
+        AmmoRepository repository = getRepository();
+        repository.findById(1, new ModelRepository.FindCallback<Ammo>() {
 
             @Override
             public void onError(Throwable t) {
@@ -191,8 +191,8 @@ public class Fragment2 extends Fragment {
     }
     
     private void delete() {
-        AmmoPrototype prototype = getPrototype();
-        prototype.findById(1, new ModelPrototype.FindCallback<Ammo>() {
+        AmmoRepository repository = getRepository();
+        repository.findById(1, new ModelRepository.FindCallback<Ammo>() {
 
             @Override
             public void onError(Throwable t) {
