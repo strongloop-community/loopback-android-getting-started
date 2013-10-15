@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.google.common.collect.ImmutableMap;
 import com.strongloop.android.loopback.Model;
 import com.strongloop.android.loopback.ModelAdapter;
-import com.strongloop.android.loopback.ModelPrototype;
+import com.strongloop.android.loopback.ModelRepository;
 import com.strongloop.android.remoting.adapters.Adapter;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
@@ -59,7 +59,7 @@ public class Fragment3 extends Fragment {
     }
     
     private ModelAdapter<Model> adapter;
-    private ModelPrototype<Model> prototype;
+    private ModelRepository<Model> repository;
     
     public ModelAdapter<Model> getAdapter() {
         if (adapter == null) {
@@ -74,16 +74,16 @@ public class Fragment3 extends Fragment {
         return adapter;
     }
     
-    private ModelPrototype<Model> getPrototype() {
-        if (prototype == null) {
-            prototype = getAdapter().createPrototype("weapon");
+    private ModelRepository<Model> getRepository() {
+        if (repository == null) {
+            repository = getAdapter().createRepository("weapon");
         }
-        return prototype;
+        return repository;
     }
     
     private void findLowestAudibleRange() {
-        ModelPrototype<Model> prototype = getPrototype();
-        prototype.invokeStaticMethod("findOne",
+        ModelRepository<Model> repository = getRepository();
+        repository.invokeStaticMethod("findOne",
                 ImmutableMap.of("orderBy", "audibleRange ASC"),
                 new Adapter.JsonArrayCallback() {
             
@@ -107,8 +107,8 @@ public class Fragment3 extends Fragment {
     }
 
     private void findHighestNumberOfRounds() {
-        ModelPrototype<Model> prototype = getPrototype();
-        prototype.invokeStaticMethod("findOne",
+        ModelRepository<Model> repository = getRepository();
+        repository.invokeStaticMethod("findOne",
                 ImmutableMap.of("orderBy", "rounds DESC"),
                 new Adapter.JsonArrayCallback() {
             
