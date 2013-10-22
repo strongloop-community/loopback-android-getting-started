@@ -3,7 +3,7 @@ package com.strongloop.android.loopback.example;
 import java.util.List;
 
 import com.strongloop.android.loopback.Model;
-import com.strongloop.android.loopback.ModelAdapter;
+import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.ModelPrototype;
 
 import android.app.Fragment;
@@ -98,15 +98,14 @@ public class Fragment2 extends Fragment {
         }
     }
     
-    private ModelAdapter<Ammo> adapter;
+    private RestAdapter adapter;
     private AmmoPrototype prototype;
     
-    public ModelAdapter<Ammo> getAdapter() {
+    public RestAdapter getAdapter() {
         if (adapter == null) {
             // NOTE: "10.0.2.2" is the "localhost" of the Android emulator's 
             // host computer.
-            adapter = new ModelAdapter<Ammo>(getActivity(),
-                    "http://10.0.2.2:3000");
+            adapter = new RestAdapter(getActivity(), "http://10.0.2.2:3000");
         }
         return adapter;
     }

@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.google.common.collect.ImmutableMap;
 import com.strongloop.android.loopback.Model;
-import com.strongloop.android.loopback.ModelAdapter;
+import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.ModelPrototype;
 
 public class Fragment1 extends Fragment {
@@ -71,15 +71,14 @@ public class Fragment1 extends Fragment {
         return rootView;
     }
     
-    private ModelAdapter<Model> adapter;
+    private RestAdapter adapter;
     private ModelPrototype<Model> prototype;
     
-    public ModelAdapter<Model> getAdapter() {
+    public RestAdapter getAdapter() {
         if (adapter == null) {
             // NOTE: "10.0.2.2" is the "localhost" of the Android emulator's
             // host computer.
-            adapter = new ModelAdapter<Model>(getActivity(), 
-                    "http://10.0.2.2:3000");
+            adapter = new RestAdapter(getActivity(), "http://10.0.2.2:3000");
         }
         return adapter;
     }
