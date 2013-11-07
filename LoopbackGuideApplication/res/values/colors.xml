@@ -1,0 +1,7 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="dark_background">#0F582D</color>
+    <color name="dark_foreground">#FFF</color>
+
+</resources>
