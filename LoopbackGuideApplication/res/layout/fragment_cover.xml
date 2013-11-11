@@ -23,6 +23,8 @@
         android:scrollHorizontally="false"
         android:selectAllOnFocus="false"
         android:text="@string/hint_swipe_right_to_left"
+        android:textColor="@color/dark_foreground"
+        android:textStyle="italic"
         android:textSize="16sp" />
 
 </FrameLayout>

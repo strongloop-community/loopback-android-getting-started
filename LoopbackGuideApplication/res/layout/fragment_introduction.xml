@@ -2,12 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
+    style="@style/ContentFrameStyle"
     tools:context=".SlidePresenterActivity" >
 
     <TextView
         android:id="@+id/introduction_content"
-        style="@style/TextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top|fill_horizontal" />

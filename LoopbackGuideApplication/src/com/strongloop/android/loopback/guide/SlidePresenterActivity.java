@@ -3,15 +3,15 @@ package com.strongloop.android.loopback.guide;
 import java.util.List;
 import java.util.Vector;
 
-import com.strongloop.android.loopback.guide.lessons.LessonOneFragment;
-
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v13.app.FragmentStatePagerAdapter;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+
+import com.strongloop.android.loopback.guide.lessons.LessonOneFragment;
 
 public class SlidePresenterActivity extends FragmentActivity {
 	private PagerAdapter pagerAdapter;
@@ -20,14 +20,13 @@ public class SlidePresenterActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_slide);
-        getActionBar().hide();
 
         initializeSlides();
     }
 
     private void initializeSlides() {
         pagerAdapter = new FragmentListPagerAdapter(
-        		getFragmentManager(), createSlideFragments());
+                getSupportFragmentManager(), createSlideFragments());
 
         ViewPager pager = (ViewPager)super.findViewById(R.id.screen_pager);
         pager.setAdapter(this.pagerAdapter);

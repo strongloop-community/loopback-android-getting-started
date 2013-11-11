@@ -1,6 +1,6 @@
 package com.strongloop.android.loopback.guide.util;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.view.ViewGroup;
 import android.widget.TextView;
