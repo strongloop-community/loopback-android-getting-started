@@ -12,7 +12,8 @@
         <p><a href="http://docs.strongloop.com/loopback">docs.strongloop.com/loopback</a></p>
         <p>To keep coding, poke around the Android project. For instance,
         have a look at the way the app shares a single instance of <tt>RestAdapter</tt>
-        through {TODO!}, or read through more of the comments in the Lesson Fragments.</p>
+        through <tt>GuideApplication</tt>, or read through more of the comments
+        in the Lesson Fragments.</p>
     ]]></string>
     <string name="finale_callToAction"><![CDATA[
         <p>If you get lost, holler at us:<p>
@@ -27,4 +28,18 @@
         <p>Let\'s not waste any time with words. This is a simple
         <tt>Fragment</tt> - just swipe to the next page to get started.</p>
     ]]></string>
+    <string name="lessonOne_content"><![CDATA[
+        <h3>Lesson One: One Model, Hold the Schema</h3>
+        <p>This form creates a new Ammo model on the server.
+        <tt>Ammo</tt>, mind you has no pre-defined format!</p>
+        <p>See <tt>LessonOneFragment.java</tt> for implementation details,
+        paying special attention to the <tt>AmmoModel</tt> class and
+        the <tt>LessonOneFragment.sendRequest</tt> method.
+    ]]></string>
+    <string name="lessonOne_name">Name</string>
+    <string name="lessonOne_name_hint">Super-Duper Ammo</string>
+    <string name="lessonOne_caliber">Caliber</string>
+    <string name="lessonOne_editCaliber_hint">0.50 cal</string>
+    <string name="lessonOne_armorPiercing">Armor-piercing</string>
+    <string name="send_request">Send Request</string>
 </resources>
