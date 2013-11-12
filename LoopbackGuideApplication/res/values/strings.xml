@@ -42,4 +42,7 @@
     <string name="lessonOne_editCaliber_hint">0.50 cal</string>
     <string name="lessonOne_armorPiercing">Armor-piercing</string>
     <string name="send_request">Send Request</string>
+    <string name="lessonTwo_content"><![CDATA[
+        <h3>Lesson Two: Existing Data? No Problem.</h3>
+    ]]></string>
 </resources>

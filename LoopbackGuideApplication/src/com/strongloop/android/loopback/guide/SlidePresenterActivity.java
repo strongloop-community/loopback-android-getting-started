@@ -12,6 +12,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.strongloop.android.loopback.guide.lessons.LessonOneFragment;
+import com.strongloop.android.loopback.guide.lessons.LessonTwoFragment;
 
 public class SlidePresenterActivity extends FragmentActivity {
 	private PagerAdapter pagerAdapter;
@@ -38,6 +39,7 @@ public class SlidePresenterActivity extends FragmentActivity {
         fragments.add(new IntroductionFragment());
 
         fragments.add(new LessonOneFragment());
+        fragments.add(new LessonTwoFragment());
         // TODO - add lesson slides
 
         fragments.add(new FinaleFragment());
