@@ -45,4 +45,11 @@
     <string name="lessonTwo_content"><![CDATA[
         <h3>Lesson Two: Existing Data? No Problem.</h3>
     ]]></string>
+    <string name="lessonThree_content"><![CDATA[
+        <h3>Lesson Three: Don\'t Outgrow, Outbuild.</h3>
+    ]]></string>
+    <string name="warning_mapsNotAvailable">
+        Your device does not support Google Maps.
+        Locations will be displayed in a list. To get an interactive map view,
+        use a real device supporting OpenGL ES 2.0. Any model made after 2010 should be fine.</string>
 </resources>
