@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LoopBack Guide Application</string>
+    <string name="strongloop_logo">StrongLoop logo</string>
+    <string name="hint_swipe_right_to_left">(Hint: Swipe right-to-left)</string>
+    <string name="finale_content"><![CDATA[
+        <h3>This is, obviously, just the beginning.</h3>
+        <p>For more technical insights, check out LoopBack on GitHub:</p>
+        <p><a href="https://github.com/strongloop/loopback">github.com/strongloop/loopback</a></p>
+        <p>and our extended documentation:</p>
+        <p><a href="http://docs.strongloop.com/loopback">docs.strongloop.com/loopback</a></p>
+        <p>To keep coding, poke around the Android project. For instance,
+        have a look at the way the app shares a single instance of <tt>RestAdapter</tt>
+        through <tt>GuideApplication</tt>, or read through more of the comments
+        in the Lesson Fragments.</p>
+    ]]></string>
+    <string name="finale_callToAction"><![CDATA[
+        <p>If you get lost, holler at us:<p>
+        <p><big><strong>
+          <a href="mailto:callback@strongloop.com">callback@strongloop.com</a>
+        </strong></big></p>
+    ]]></string>
+    <string name="introduction_content"><![CDATA[
+        <h3>Welcome to the LoopBack Guide Application!</h3>
+        <p>The next three Lessons will teach you a little about LoopBack,
+        a self-hosted and open-source mobile API tier from StrongLoop.</p>
+        <p>Let\'s not waste any time with words. This is a simple
+        <tt>Fragment</tt> - just swipe to the next page to get started.</p>
+    ]]></string>
+    <string name="lessonOne_content"><![CDATA[
+        <h3>Lesson One: One Model, Hold the Schema</h3>
+        <p>This form creates a new Ammo model on the server.
+        <tt>Ammo</tt>, mind you has no pre-defined format!</p>
+        <p>See <tt>LessonOneFragment.java</tt> for implementation details,
+        paying special attention to the <tt>AmmoModel</tt> class and
+        the <tt>LessonOneFragment.sendRequest</tt> method.
+    ]]></string>
+    <string name="lessonOne_name">Name</string>
+    <string name="lessonOne_name_hint">Super-Duper Ammo</string>
+    <string name="lessonOne_caliber">Caliber</string>
+    <string name="lessonOne_editCaliber_hint">0.50 cal</string>
+    <string name="lessonOne_armorPiercing">Armor-piercing</string>
+    <string name="send_request">Send Request</string>
+    <string name="lessonTwo_content"><![CDATA[
+        <h3>Lesson Two: Existing Data? No Problem.</h3>
+    ]]></string>
+    <string name="lessonThree_content"><![CDATA[
+        <h3>Lesson Three: Don\'t Outgrow, Outbuild.</h3>
+    ]]></string>
+    <string name="warning_mapsNotAvailable">
+        Your device does not support Google Maps.
+        Locations will be displayed in a list. To get an interactive map view,
+        use a real device supporting OpenGL ES 2.0. Any model made after 2010 should be fine.</string>
+</resources>
