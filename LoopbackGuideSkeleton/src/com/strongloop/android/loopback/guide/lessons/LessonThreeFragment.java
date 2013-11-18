@@ -55,44 +55,9 @@ public class LessonThreeFragment extends HtmlFragment {
      * to be displayed as pins.
      */
     private void sendRequest() {
-        // 1. Grab the shared RestAdapter instance.
-        final GuideApplication app = (GuideApplication)getActivity().getApplication();
-        final RestAdapter adapter = app.getLoopBackAdapter();
-
-        // 2. Instantiate our ModelRepository. Rather than create a subclass
-        // this time, we'll use the base classes to show off their off-the-shelf
-        // super-powers.
-        final ModelRepository<Model> repository = adapter.createRepository("location");
-
-        // 3. The meat of the lesson: custom behaviour. Here, we're invoking
-        // a custom, static method on the Location model type called "nearby".
-        // As you might expect, it does a geo-based query ordered by the closeness
-        // to the provided latitude and longitude. Rather than go through
-        // LocationClient, we've plugged in the coordinates of our favorite noodle
-        // shop here in San Mateo, California.
-        //
-        // Once we've successfully loaded the models, we pass them to our
-        // `displayLocations` method to be converted to MarkerOptions and
-        // added to the map as clickable pins!
-        final Map<String,?> parameters = ImmutableMap.of(
-                "here[lat]", MY_POSITION.latitude,
-                "here[lng]", MY_POSITION.longitude);
-
-        repository.invokeStaticMethod(
-                "nearby",
-                parameters,
-                new Adapter.JsonArrayCallback() {
-                    @Override
-                    public void onSuccess(final JSONArray response) {
-                        displayLocations(response);
-                    }
-
-                    @Override
-                    public void onError(final Throwable t) {
-                        Log.e(getTag(), "Cannot list locations.", t);
-                        showResult("Failed.");
-                    }
-                });
+        /**
+         * Insert implementation here.
+         */
     }
 
     private void showResult(final String message) {

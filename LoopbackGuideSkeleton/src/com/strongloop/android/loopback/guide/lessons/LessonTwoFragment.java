@@ -27,73 +27,8 @@ import com.strongloop.android.loopback.guide.util.HtmlFragment;
 public class LessonTwoFragment extends HtmlFragment {
 
     /**
-     * Unlike Lesson One, our WeaponModel class is based _entirely_ on an existing schema.
-     *
-     * In this case, every field in Oracle that's defined as a NUMBER type becomes a Number,
-     * and each field defined as a VARCHAR2 becomes a String.
-     *
-     * When we load these models from Oracle, LoopBack uses these property setters and getters
-     * to know what data we care about. If we left off `extras`, for example, LoopBack would
-     * simply omit that field.
+     * Insert custom subclasses of Model and ModelRepository
      */
-    public static class WeaponModel extends Model {
-        String name;
-        public String getName() {
-            return name;
-        }
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        float audibleRange;
-        public float getAudibleRange() {
-            return audibleRange;
-        }
-        public void setAudibleRange(float audibleRange) {
-            this.audibleRange = audibleRange;
-        }
-
-        float effectiveRange;
-        public float getEffectiveRange() {
-            return effectiveRange;
-        }
-        public void setEffectiveRange(float effectiveRange) {
-            this.effectiveRange = effectiveRange;
-        }
-
-        int rounds;
-        public int getRounds() {
-            return rounds;
-        }
-        public void setRounds(int rounds) {
-            this.rounds = rounds;
-        }
-
-        String extras;
-        public String getExtras() {
-            return extras;
-        }
-        public void setExtras(String extras) {
-            this.extras = extras;
-        }
-
-        String fireModes;
-        public String getFireModes() {
-            return fireModes;
-        }
-        public void setFireModes(String fireModes) {
-            this.fireModes = fireModes;
-        }
-    }
-
-    /**
-     * Our custom ModelRepository subclass. See Lesson One for more information.
-     */
-    public static class WeaponRepository extends ModelRepository<WeaponModel> {
-        public WeaponRepository() {
-            super("weapon", WeaponModel.class);
-        }
-    }
 
     /**
      * Loads all Weapon models from the server. To make full use of this, return to your (running)
@@ -114,29 +49,9 @@ public class LessonTwoFragment extends HtmlFragment {
      * an Oracle data source.
      */
     private void sendRequest() {
-        // 1. Grab the shared RestAdapter instance.
-        GuideApplication app = (GuideApplication)getActivity().getApplication();
-        RestAdapter adapter = app.getLoopBackAdapter();
-
-        // 2. Instantiate our WeaponRepository.See LessonOneView for further discussion.
-        WeaponRepository repository = adapter.createRepository(WeaponRepository.class);
-
-        // 3. Rather than instantiate a model directly like we did in Lesson One, we'll query
-        //    the server for all Weapons, filling out our ListView with the results. In this case,
-        //    the Repository is really the workhorse; the Model is just a simple container.
-
-        repository.findAll(new ModelRepository.FindAllCallback<LessonTwoFragment.WeaponModel>() {
-            @Override
-            public void onSuccess(List<WeaponModel> models) {
-                list.setAdapter(new WeaponListAdapter(getActivity(), models));
-            }
-
-            @Override
-            public void onError(Throwable t) {
-                Log.e(getTag(), "Cannot save Ammo model.", t);
-                showResult("Failed.");
-            }
-        });
+        /**
+         * Insert implementation here.
+         */
     }
 
     private void showResult(String message) {
@@ -145,9 +60,11 @@ public class LessonTwoFragment extends HtmlFragment {
 
     /**
      * Basic ListAdapter implementation using our custom Model type.
+     * Replace all occurrences of Model in the code below with your
+     * custom subclass.
      */
-    private static class WeaponListAdapter extends ArrayAdapter<WeaponModel> {
-        public WeaponListAdapter(Context context, List<WeaponModel> list) {
+    private static class WeaponListAdapter extends ArrayAdapter<Model> {
+        public WeaponListAdapter(Context context, List<Model> list) {
             super(context, 0, list);
         }
 
@@ -158,13 +75,12 @@ public class LessonTwoFragment extends HtmlFragment {
                         android.R.layout.simple_list_item_1, null);
             }
 
-            WeaponModel model = getItem(position);
+            Model model = getItem(position);
             if (model == null) return convertView;
 
             TextView textView = (TextView)convertView.findViewById(
                     android.R.id.text1);
-            textView.setText(
-                    model.getName() + " - " + model.getEffectiveRange());
+            textView.setText("TODO - build your own text for each item here");
 
             return convertView;
         }
