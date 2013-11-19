@@ -9,8 +9,7 @@
         <p>For more technical insights, check out LoopBack on GitHub:</p>
         <p><a href="https://github.com/strongloop/loopback">github.com/strongloop/loopback</a></p>
         <p>and our extended documentation:</p>
-        <p><a href="http://docs.strongloop.com/display/DOC/LoopBack">
-          docs.strongloop.com/display/DOC/LoopBack</a></p>
+        <p><a href="http://docs.strongloop.com/loopback">docs.strongloop.com/loopback</a></p>
         <p>To keep coding, poke around the Android project. For instance,
         have a look at the way the app shares a single instance of <tt>RestAdapter</tt>
         through <tt>GuideApplication</tt>, or read through more of the comments
