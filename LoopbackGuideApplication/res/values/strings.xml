@@ -52,4 +52,15 @@
         Your device does not support Google Maps.
         Locations will be displayed in a list. To get an interactive map view,
         use a real device supporting OpenGL ES 2.0. Any model made after 2010 should be fine.</string>
+    <string name="lessonUser_content"><![CDATA[
+        <h3>Lesson User: Become Somebody</h3>
+        <p>This form creates a new User on the server, etc.
+    ]]></string>
+    <string name="lessonUser_email">Email</string>
+    <string name="lessonUser_password">Password</string>
+    <string name="lessonUser_create">Create</string>
+    <string name="lessonUser_email_hint">email@domain.com</string>
+    <string name="lessonUser_password_hint">password</string>
+    <string name="lessonUser_login">Login</string>
+    <string name="lessonUser_logout">Logout</string>
 </resources>
