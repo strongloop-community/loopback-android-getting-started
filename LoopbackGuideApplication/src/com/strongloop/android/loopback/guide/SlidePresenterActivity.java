@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import com.strongloop.android.loopback.guide.lessons.LessonOneFragment;
 import com.strongloop.android.loopback.guide.lessons.LessonThreeFragment;
 import com.strongloop.android.loopback.guide.lessons.LessonTwoFragment;
+import com.strongloop.android.loopback.guide.lessons.LessonUserFragment;
 
 public class SlidePresenterActivity extends FragmentActivity {
     private PagerAdapter pagerAdapter;
@@ -39,6 +40,7 @@ public class SlidePresenterActivity extends FragmentActivity {
         fragments.add(new CoverFragment());
         fragments.add(new IntroductionFragment());
 
+        fragments.add(new LessonUserFragment());
         fragments.add(new LessonOneFragment());
         fragments.add(new LessonTwoFragment());
         fragments.add(new LessonThreeFragment());
