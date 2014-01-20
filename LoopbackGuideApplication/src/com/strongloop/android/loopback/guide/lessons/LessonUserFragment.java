@@ -70,8 +70,12 @@ public class LessonUserFragment extends HtmlFragment {
 			@Override
 			public void onSuccess(User newUser) {
 				// Local copy of newly logged in user 
-				user = newUser;
-				showResult("Logged in!");
+				if ( newUser == null ) {
+					showResult("User not found.");
+				} else {
+					user = newUser;
+					showResult("Logged in!");
+				}
 			}
 			
 			@Override
