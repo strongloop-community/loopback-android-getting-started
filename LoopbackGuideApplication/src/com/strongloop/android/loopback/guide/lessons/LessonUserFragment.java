@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.strongloop.android.loopback.Model;
 import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.User;
 import com.strongloop.android.loopback.UserRepository;
@@ -65,24 +64,24 @@ public class LessonUserFragment extends HtmlFragment {
 				
 		// Login the user using the repository
 		userRepo.loginUser(email, password, 
-			new UserRepository.LoginCallback() {
-			
-			@Override
-			public void onSuccess(User newUser) {
-				// Local copy of newly logged in user 
-				if ( newUser == null ) {
-					showResult("User not found.");
-				} else {
-					user = newUser;
-					showResult("Logged in!");
-				}
-			}
-			
-			@Override
-			public void onError(Throwable t) {
-				showResult("Failed to login in");
-			}
-		});			
+			userRepo.new GetLoggedInUserCallback() {
+                
+                @Override
+                public void onError(Throwable t) {
+                    showResult("Failed to login in");
+                }
+                
+                @Override
+                public void onSuccess(User newUser) {
+                    // Local copy of newly logged in user 
+                    if ( newUser == null ) {
+                        showResult("User not found.");
+                    } else {
+                        user = newUser;
+                        showResult("Logged in!");
+                    }                    
+                };
+            });			
 	}
 	
 	/**
@@ -91,7 +90,7 @@ public class LessonUserFragment extends HtmlFragment {
 	private void sendLogoutRequest() {
 				
 		// Logout the current user
-		user.logout(new User.Callback() {
+		userRepo.logout(new User.Callback() {
 			
 			@Override
 			public void onSuccess() {
