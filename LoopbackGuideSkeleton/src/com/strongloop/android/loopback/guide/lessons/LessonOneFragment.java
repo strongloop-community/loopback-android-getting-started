@@ -70,18 +70,18 @@ public class LessonOneFragment extends HtmlFragment {
 	// Properties for accessing form values
 	//
 
-	private String getName() {
-		final EditText widget = (EditText) getRootView().findViewById(R.id.editName);
+	private String getUser() {
+		final EditText widget = (EditText) getRootView().findViewById(R.id.editUser);
 		return widget.getText().toString();
 	}
 
-	private String getCaliber() {
-		final EditText widget = (EditText) getRootView().findViewById(R.id.editCaliber);
+	private String getComment() {
+		final EditText widget = (EditText) getRootView().findViewById(R.id.editComment);
 		return widget.getText().toString();
 	}
 
-	private Boolean isArmorPiercing() {
-		final CheckBox widget = (CheckBox) getRootView().findViewById(R.id.editArmorPiercing);
+	private Boolean isReviewed() {
+		final CheckBox widget = (CheckBox) getRootView().findViewById(R.id.editReviewed);
 		return widget.isChecked();
 	}
 }

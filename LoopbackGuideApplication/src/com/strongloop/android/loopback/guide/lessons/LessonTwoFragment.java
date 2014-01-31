@@ -27,7 +27,7 @@ import com.strongloop.android.loopback.guide.util.HtmlFragment;
 public class LessonTwoFragment extends HtmlFragment {
 
     /**
-     * Unlike Lesson One, our WeaponModel class is based _entirely_ on an existing schema.
+     * Unlike Lesson One, our CarModel class is based _entirely_ on an existing schema.
      *
      * In this case, every field in Oracle that's defined as a NUMBER type becomes a Number,
      * and each field defined as a VARCHAR2 becomes a String.
@@ -36,67 +36,70 @@ public class LessonTwoFragment extends HtmlFragment {
      * to know what data we care about. If we left off `extras`, for example, LoopBack would
      * simply omit that field.
      */
-    public static class WeaponModel extends Model {
-        String name;
-        public String getName() {
-            return name;
-        }
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        float audibleRange;
-        public float getAudibleRange() {
-            return audibleRange;
-        }
-        public void setAudibleRange(float audibleRange) {
-            this.audibleRange = audibleRange;
-        }
-
-        float effectiveRange;
-        public float getEffectiveRange() {
-            return effectiveRange;
-        }
-        public void setEffectiveRange(float effectiveRange) {
-            this.effectiveRange = effectiveRange;
-        }
-
-        int rounds;
-        public int getRounds() {
-            return rounds;
-        }
-        public void setRounds(int rounds) {
-            this.rounds = rounds;
-        }
-
-        String extras;
-        public String getExtras() {
-            return extras;
-        }
-        public void setExtras(String extras) {
-            this.extras = extras;
-        }
-
-        String fireModes;
-        public String getFireModes() {
-            return fireModes;
-        }
-        public void setFireModes(String fireModes) {
-            this.fireModes = fireModes;
-        }
+    public static class CarModel extends Model {
+    	private String vin;
+    	private int year;
+    	private String make;
+    	private String model;
+    	private String image;
+    	private String carClass;
+    	private String color;
+    	
+    	public String getVin() {
+			return vin;
+		}
+		public void setVin(String vin) {
+			this.vin = vin;
+		}
+		public int getYear() {
+			return year;
+		}
+		public void setYear(int year) {
+			this.year = year;
+		}
+		public String getMake() {
+			return make;
+		}
+		public void setMake(String make) {
+			this.make = make;
+		}
+		public String getModel() {
+			return model;
+		}
+		public void setModel(String model) {
+			this.model = model;
+		}
+		public String getImage() {
+			return image;
+		}
+		public void setImage(String image) {
+			this.image = image;
+		}
+		public String getCarClass() {
+			return carClass;
+		}
+		public void setCarClass(String carClass) {
+			this.carClass = carClass;
+		}
+		public String getColor() {
+			return color;
+		}
+		public void setColor(String color) {
+			this.color = color;
+		}
     }
 
     /**
      * Our custom ModelRepository subclass. See Lesson One for more information.
      */
-    public static class WeaponRepository extends ModelRepository<WeaponModel> {
-        public WeaponRepository() {
-            super("weapon", WeaponModel.class);
+    public static class CarRepository extends ModelRepository<CarModel> {
+        public CarRepository() {
+            super("car", CarModel.class);
         }
     }
 
     /**
-     * Loads all Weapon models from the server. To make full use of this, return to your (running)
+     * Loads all Car models from the server. To make full use of this, return to your (running)
      * Sample Application and restart it with the DB environment variable set to "oracle".
      * For example, on most *nix flavors (including Mac OS X), that looks like:
      *
@@ -109,8 +112,8 @@ public class LessonTwoFragment extends HtmlFragment {
      * data, it's that easy to pull into LoopBack. No need to leave it behind.
      *
      * Advanced users: LoopBack supports multiple data sources simultaneously, albeit on a per-model
-     * basis. In your next project, try connecting a schema-less model (e.g. our Ammo example)
-     * to a Mongo data source, while connecting a legacy model (e.g. this Weapon example) to
+     * basis. In your next project, try connecting a schema-less model (e.g. our Note example)
+     * to a Mongo data source, while connecting a legacy model (e.g. this Car example) to
      * an Oracle data source.
      */
     private void sendRequest() {
@@ -118,22 +121,22 @@ public class LessonTwoFragment extends HtmlFragment {
         GuideApplication app = (GuideApplication)getActivity().getApplication();
         RestAdapter adapter = app.getLoopBackAdapter();
 
-        // 2. Instantiate our WeaponRepository.See LessonOneView for further discussion.
-        WeaponRepository repository = adapter.createRepository(WeaponRepository.class);
+        // 2. Instantiate our CarRepository.See LessonOneView for further discussion.
+        CarRepository repository = adapter.createRepository(CarRepository.class);
 
         // 3. Rather than instantiate a model directly like we did in Lesson One, we'll query
-        //    the server for all Weapons, filling out our ListView with the results. In this case,
+        //    the server for all Cars, filling out our ListView with the results. In this case,
         //    the Repository is really the workhorse; the Model is just a simple container.
 
-        repository.findAll(new ModelRepository.FindAllCallback<LessonTwoFragment.WeaponModel>() {
+        repository.findAll(new ModelRepository.FindAllCallback<LessonTwoFragment.CarModel>() {
             @Override
-            public void onSuccess(List<WeaponModel> models) {
-                list.setAdapter(new WeaponListAdapter(getActivity(), models));
+            public void onSuccess(List<CarModel> models) {
+                list.setAdapter(new CarListAdapter(getActivity(), models));
             }
 
             @Override
             public void onError(Throwable t) {
-                Log.e(getTag(), "Cannot save Ammo model.", t);
+                Log.e(getTag(), "Cannot save Note model.", t);
                 showResult("Failed.");
             }
         });
@@ -146,8 +149,8 @@ public class LessonTwoFragment extends HtmlFragment {
     /**
      * Basic ListAdapter implementation using our custom Model type.
      */
-    private static class WeaponListAdapter extends ArrayAdapter<WeaponModel> {
-        public WeaponListAdapter(Context context, List<WeaponModel> list) {
+    private static class CarListAdapter extends ArrayAdapter<CarModel> {
+        public CarListAdapter(Context context, List<CarModel> list) {
             super(context, 0, list);
         }
 
@@ -158,13 +161,13 @@ public class LessonTwoFragment extends HtmlFragment {
                         android.R.layout.simple_list_item_1, null);
             }
 
-            WeaponModel model = getItem(position);
+            CarModel model = getItem(position);
             if (model == null) return convertView;
 
             TextView textView = (TextView)convertView.findViewById(
                     android.R.id.text1);
             textView.setText(
-                    model.getName() + " - " + model.getEffectiveRange());
+                    model.getModel() + " - " + model.getYear());
 
             return convertView;
         }
