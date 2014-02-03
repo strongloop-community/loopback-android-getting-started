@@ -63,4 +63,10 @@
     <string name="lessonUser_password_hint">password</string>
     <string name="lessonUser_login">Login</string>
     <string name="lessonUser_logout">Logout</string>
+    <string name="lessonFile_content"><![CDATA[
+        <h3>Lesson File: Upload, Download a File</h3>
+        <p>More text here...
+    ]]></string>
+    <string name="lessonFile_upload">Upload</string>
+    <string name="lessonFile_download">Download</string>
 </resources>
