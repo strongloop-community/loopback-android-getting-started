@@ -1,5 +1,7 @@
 package com.strongloop.android.loopback.guide.lessons;
 
+import java.util.List;
+
 import android.content.Context;
 import android.media.MediaScannerConnection;
 import android.media.MediaScannerConnection.MediaScannerConnectionClient;
@@ -13,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.strongloop.android.loopback.Container;
+import com.strongloop.android.loopback.ContainerRepository;
 import com.strongloop.android.loopback.File;
 import com.strongloop.android.loopback.FileRepository;
 import com.strongloop.android.loopback.Model;
@@ -23,31 +27,45 @@ import com.strongloop.android.loopback.guide.util.HtmlFragment;
 
 public class LessonFileFragment extends HtmlFragment {
     
+    ContainerRepository containerRepo;
+    FileRepository fileRepo;
+    
     // For testing the file model upload and download. The file is expected to be
     // in the Android Pictures directory. 
     private String lbTestUploadFile = "lbTestUploadFile.jpg";
     private String lbTestDownloadFile = "lbTestDownloadFile.jpg";
    
+    private void sendCreateContainerRequest()
+    {
+        Container containerModel = containerRepo.createContainer("Container45");
+        containerModel.save( new Model.Callback() {
+
+            @Override
+            public void onSuccess() {
+                showResult("Container created!");                
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                showResult("Failed.");
+            }            
+        });
+    }
+    
     /**
      * Saves the desired Ammo model to the server with all values pulled from the UI.
      */
     private void sendUploadRequest() {
-        // 1. Grab the shared RestAdapter instance.
-        GuideApplication app = (GuideApplication)getActivity().getApplication();
-        RestAdapter adapter = app.getLoopBackAdapter();
-
-        FileRepository repository = adapter.createRepository(FileRepository.class, "containers");
         
-        // 3. From that prototype, create a new AmmoModel. We pass in an empty dictionary to defer
-        //    setting any values.
-        File fileModel = repository.createModel(null);
+        // From that prototype, create a new File model. 
+        File fileModel = fileRepo.createModel(null);
 
-        // 4. Pull model values from the UI.
+        // Set file properties
         fileModel.setName("facekick.gif");
         fileModel.setContainer("container1");
         fileModel.setUrl(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() );
 
-        // 5. Save!
+        // Upload!
         fileModel.upload(new Model.Callback() {
 
             @Override
@@ -64,14 +82,10 @@ public class LessonFileFragment extends HtmlFragment {
     }
 
     private void sendDownloadRequest() {
-        GuideApplication app = (GuideApplication)getActivity().getApplication();
-        RestAdapter adapter = app.getLoopBackAdapter();
-
-        FileRepository repository = adapter.createRepository(FileRepository.class, "containers");
-
+        
         java.io.File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         
-        repository.download(storageDir.toString(), "container1", "facekick.jpg", 
+        fileRepo.download(storageDir.toString(), "container1", "facekick.jpg", 
                 new FileRepository.FileCallback()  {
 
             @Override
@@ -88,69 +102,25 @@ public class LessonFileFragment extends HtmlFragment {
                 showResult("Failed.");
             }
             
-        });
+        });        
+    }
+    
+   private void sendGetAllRequest() {
         
-        // 3. From that prototype, create a new AmmoModel. We pass in an empty dictionary to defer
-        //    setting any values.
-        //File fileModel = repository.createModel(null);
-
-        // 4. Pull model values from the UI.
-        //fileModel.setName("namedontmattertest");
-
-        // Test download code Start
-        /***
-        AsyncHttpClient testClient = new AsyncHttpClient();
-        testClient.get("http://192.168.1.4:3000/containers/container1/download/birthdaywolves.jpg", new BinaryHttpResponseHandler() {
-            
-            @Override
-            public void onStart() {
-                Log.e("blah", "start");
-            }
-            
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] imageData, Throwable e) {
-                Log.e("blah", "no!");
-            }
+        containerRepo.getAllContainers( new ContainerRepository.AllContainersCallback()  {
 
             @Override
-            public String[] getAllowedContentTypes() {
-                // Allowing all data for debug purposes
-                return new String[]{".*"};
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers,
-                    byte[] binaryData) {
-                Log.e("blah", "here");
-                // TODO Auto-generated method stub
-                saveFile(binaryData, lbTestDownloadFile);
-                
-            }
-            
-            
-            //public void getAllowedContentTypes {
-            //    Log.e("blah", "what?");
-            //}
-        });            
-        ***/
-        // Test download code End
-        
-        // 5. Save!
-        /**
-        fileModel.save(new Model.Callback() {
-
-            @Override
-            public void onSuccess() {
-                showResult("Saved!");
+            public void onSuccess(List<Container> containerList) {
+                showResult("All Containers Retrieved!");                
             }
 
             @Override
             public void onError(Throwable t) {
-                Log.e(getTag(), "Cannot save File model.", t);
+                Log.e(getTag(), "Cannot get containers.", t);
                 showResult("Failed.");
             }
-        });
-        **/
+            
+        });        
     }
     
     void showResult(String message) {
@@ -170,49 +140,35 @@ public class LessonFileFragment extends HtmlFragment {
 
         setHtmlText(R.id.content, R.string.lessonFile_content);
 
-        java.io.File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        java.io.File uploadFile = new java.io.File( storageDir + "/" + lbTestUploadFile);
-        
         installButtonHandlers();
-        boolean exists = uploadFile.exists();
-        
-        //String resourcePath = getActivity().getResources().
-        /***
-        try {
-            files = assetManager.list("files");
-            File assetFile = new File("assets/"  + files[0]);
-            
-            exists = assetFile.exists();
-            int t=3;
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        ***/
-        
-        /**
-        String fileName = fileDir.toString() + "/ftf_dog01.jpg";
-        File uploadFile = new File(fileName);
-        boolean doesExist = uploadFile.exists();
-        **/
-        
         
         // Grab the shared RestAdapter instance.
         GuideApplication app = (GuideApplication)getActivity().getApplication();
         RestAdapter adapter = app.getLoopBackAdapter();
         
-        // Create user repository based on model repository
-        //userRepo = adapter.createRepository(UserRepository.class);
+        containerRepo = adapter.createRepository(ContainerRepository.class, "containers");
+        fileRepo = adapter.createRepository(FileRepository.class, "containers");
                 
         return getRootView();
     }
 
     private void installButtonHandlers()
     {
+        installCreateButtonClickHandler();
         installUploadButtonClickHandler();
         installDownloadButtonClickHandler();
+        installGetAllButtonClickHandler();
     }
 
+    private void installCreateButtonClickHandler() {
+        final Button button = (Button) getRootView().findViewById(R.id.createButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                sendCreateContainerRequest();
+            }
+        });
+    }
+    
     private void installUploadButtonClickHandler() {
         final Button button = (Button) getRootView().findViewById(R.id.uploadButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -231,6 +187,15 @@ public class LessonFileFragment extends HtmlFragment {
         });
     }
 
+    private void installGetAllButtonClickHandler() {
+        final Button button = (Button) getRootView().findViewById(R.id.getAllButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                sendGetAllRequest();
+            }
+        });
+    }
+    
     
 
     private class SingleMediaScanner implements MediaScannerConnectionClient 

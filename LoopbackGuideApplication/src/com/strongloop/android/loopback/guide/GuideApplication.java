@@ -16,8 +16,9 @@ public class GuideApplication extends Application {
             // However, some applications will need to talk to more than one
             // server - create as many Adapters as you need.
             adapter = new RestAdapter(
-                    getApplicationContext(), "http://10.0.2.2:3000/");
-
+                    //getApplicationContext(), "http://10.0.2.2:3000/");
+            		//getApplicationContext(), "http://192.168.1.4:3000/api/");
+                    getApplicationContext(), "http://192.168.1.4:3000/");
             // This boilerplate is required for Lesson Three.
             adapter.getContract().addItem(
                     new RestContractItem("locations/nearby", "GET"),

@@ -3,18 +3,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/ContentFrameStyle">
-    
+
    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+       <TextView
+           android:id="@+id/content"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+
+       <TextView
+           android:id="@+id/TextView01"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingTop="20dp"
+           android:text="@string/lessonFile_container_name" />
+
+       <EditText
+           android:id="@+id/editText1"
+           android:layout_width="152dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:ems="10" />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" >
+
+           <Button
+               android:id="@+id/createButton"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/lessonFile_create"
+               android:textSize="14sp" />
+
+           <Button
+               android:id="@+id/deleteButton"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/lessonFile_delete"
+               android:textSize="14sp" />
+
+       </LinearLayout>
 
         <!-- poor man's spacer -->
+
+       <Button
+           android:id="@+id/getAllButton"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="@string/lessonFile_getAllContainers"
+           android:textSize="14sp" />
+
+       <TextView
+           android:id="@+id/textView1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:paddingTop="20dp"
+           android:text="@string/lessonFile_upload_file" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,13 +76,15 @@
                 android:id="@+id/uploadButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lessonFile_upload" />
+                android:text="@string/lessonFile_upload"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/downloadButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lessonFile_download" />
+                android:text="@string/lessonFile_download"
+                android:textSize="14sp" />
 
         </LinearLayout>
 

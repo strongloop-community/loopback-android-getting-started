@@ -69,4 +69,9 @@
     ]]></string>
     <string name="lessonFile_upload">Upload</string>
     <string name="lessonFile_download">Download</string>
+    <string name="lessonFile_container_name">Container Name:</string>
+    <string name="lessonFile_create">Create</string>
+    <string name="lessonFile_upload_file">Upload / Download Test  Files</string>
+    <string name="lessonFile_delete">Delete</string>
+    <string name="lessonFile_getAllContainers">Get All Containers</string>
 </resources>
