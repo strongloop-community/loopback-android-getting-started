@@ -1,11 +1,11 @@
 package com.strongloop.android.loopback.guide;
 
-import com.strongloop.android.loopback.guide.util.HtmlFragment;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.strongloop.android.loopback.guide.util.HtmlFragment;
 
 public class IntroductionFragment extends HtmlFragment {
 	@Override
