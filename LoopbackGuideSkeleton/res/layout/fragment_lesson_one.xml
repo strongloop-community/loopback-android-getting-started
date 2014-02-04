@@ -18,15 +18,16 @@
             style="@style/LabelStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lessonOne_name" />
+            android:text="@string/lessonOne_user" />
 
         <EditText
-            android:id="@+id/editName"
+            android:id="@+id/editUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/lessonOne_name_hint"
-            android:inputType="text" >
+            android:hint="@string/lessonOne_user_hint"
+            android:inputType="text"
+            android:text="@string/lessonOne_user_hint" >
 
             <requestFocus />
         </EditText>
@@ -35,21 +36,22 @@
             style="@style/LabelStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lessonOne_caliber" />
+            android:text="@string/lessonOne_comment" />
 
         <EditText
-            android:id="@+id/editCaliber"
+            android:id="@+id/editComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/lessonOne_editCaliber_hint"
-            android:inputType="text" />
+            android:hint="@string/lessonOne_editComment_hint"
+            android:inputType="text"
+            android:text="@string/lessonOne_editComment_hint" />
 
         <CheckBox
-            android:id="@+id/editArmorPiercing"
+            android:id="@+id/editReviewed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lessonOne_armorPiercing" />
+            android:text="@string/lessonOne_reviewed" />
 
         <!-- poor man's spacer -->
         <TextView

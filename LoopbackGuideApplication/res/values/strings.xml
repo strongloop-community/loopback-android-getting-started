@@ -30,17 +30,17 @@
     ]]></string>
     <string name="lessonOne_content"><![CDATA[
         <h3>Lesson One: One Model, Hold the Schema</h3>
-        <p>This form creates a new Ammo model on the server.
-        <tt>Ammo</tt>, mind you has no pre-defined format!</p>
+        <p>This form creates a new Note model on the server.
+        <tt>Note</tt>, mind you has no pre-defined format!</p>
         <p>See <tt>LessonOneFragment.java</tt> for implementation details,
-        paying special attention to the <tt>AmmoModel</tt> class and
+        paying special attention to the <tt>NoteModel</tt> class and
         the <tt>LessonOneFragment.sendRequest</tt> method.
     ]]></string>
-    <string name="lessonOne_name">Name</string>
-    <string name="lessonOne_name_hint">Super-Duper Ammo</string>
-    <string name="lessonOne_caliber">Caliber</string>
-    <string name="lessonOne_editCaliber_hint">0.50 cal</string>
-    <string name="lessonOne_armorPiercing">Armor-piercing</string>
+    <string name="lessonOne_user">User</string>
+    <string name="lessonOne_user_hint">Me</string>
+    <string name="lessonOne_comment">Comment</string>
+    <string name="lessonOne_editComment_hint">My comment</string>
+    <string name="lessonOne_reviewed">Reviewed</string>
     <string name="send_request">Send Request</string>
     <string name="lessonTwo_content"><![CDATA[
         <h3>Lesson Two: Existing Data? No Problem.</h3>
