@@ -34,11 +34,6 @@ public class LessonFileFragment extends HtmlFragment {
     Container containerModel; // currently created container
     File fileModel; // currently created file
     
-    // For testing the file model upload and download. The file is expected to be
-    // in the Android Pictures directory. 
-    private String lbTestUploadFile = "lbTestUploadFile.jpg";
-    private String lbTestDownloadFile = "lbTestDownloadFile.jpg";
-   
     
     private void sendCreateContainerRequest()
     {
