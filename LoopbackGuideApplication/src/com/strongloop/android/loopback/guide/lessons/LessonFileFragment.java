@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.strongloop.android.loopback.Container;
@@ -30,14 +31,19 @@ public class LessonFileFragment extends HtmlFragment {
     ContainerRepository containerRepo;
     FileRepository fileRepo;
     
+    Container containerModel; // currently created container
+    File fileModel; // currently created file
+    
     // For testing the file model upload and download. The file is expected to be
     // in the Android Pictures directory. 
     private String lbTestUploadFile = "lbTestUploadFile.jpg";
     private String lbTestDownloadFile = "lbTestDownloadFile.jpg";
    
+    
     private void sendCreateContainerRequest()
     {
-        Container containerModel = containerRepo.createContainer("Container45");
+        String containerName = getContainerName();
+        containerModel = containerRepo.createContainer(containerName);
         containerModel.save( new Model.Callback() {
 
             @Override
@@ -81,6 +87,42 @@ public class LessonFileFragment extends HtmlFragment {
         });
     }
 
+    private void sendGetContainerRequest() {
+        
+        String containerName = getContainerName();        
+        containerRepo.get(containerName, new ContainerRepository.ContainerCallback() {
+
+            @Override
+            public void onError(Throwable t) {
+                showResult("Failed.");
+            }
+
+            @Override
+            public void onSuccess(Container container) {
+                containerModel = container;
+                showResult("Container created!");                                
+            }            
+        });
+    }
+    
+    private void sendGetFileRequest() {
+  
+        containerModel.getFile( "f1.txt", new FileRepository.FileCallback() {
+
+            @Override
+            public void onError(Throwable t) {
+                showResult("Failed.");
+            }
+
+            @Override
+            public void onSuccess(File file) {
+                fileModel = file;
+                showResult("File successfully retrieved!");
+            }            
+        });
+    }
+    
+    
     private void sendDownloadRequest() {
         
         java.io.File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
@@ -105,9 +147,29 @@ public class LessonFileFragment extends HtmlFragment {
         });        
     }
     
+   private void sendDeleteContainerRequest() {
+   
+       if ( containerModel != null ) {
+           containerModel.delete(new Model.Callback() {
+
+            @Override
+            public void onSuccess() {
+                showResult("Deleted!");
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                Log.e(getTag(), "Cannot delete Container.", t);
+                showResult("Failed.");
+            }
+               
+           });
+       }
+   }
+   
    private void sendGetAllRequest() {
         
-        containerRepo.getAllContainers( new ContainerRepository.AllContainersCallback()  {
+        containerRepo.getAll( new ContainerRepository.AllContainersCallback()  {
 
             @Override
             public void onSuccess(List<Container> containerList) {
@@ -155,8 +217,11 @@ public class LessonFileFragment extends HtmlFragment {
     private void installButtonHandlers()
     {
         installCreateButtonClickHandler();
+        installGetContainerButtonClickHandler();
+        installGetFileButtonClickHandler();
         installUploadButtonClickHandler();
         installDownloadButtonClickHandler();
+        installDeleteContainerButtonClickHandler();
         installGetAllButtonClickHandler();
     }
 
@@ -165,6 +230,24 @@ public class LessonFileFragment extends HtmlFragment {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 sendCreateContainerRequest();
+            }
+        });
+    }
+
+    private void installGetContainerButtonClickHandler() {
+        final Button button = (Button) getRootView().findViewById(R.id.getContainerButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                sendGetContainerRequest();
+            }
+        });
+    }
+    
+    private void installGetFileButtonClickHandler() {
+        final Button button = (Button) getRootView().findViewById(R.id.getFileButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                sendGetFileRequest();
             }
         });
     }
@@ -187,6 +270,15 @@ public class LessonFileFragment extends HtmlFragment {
         });
     }
 
+    private void installDeleteContainerButtonClickHandler() {
+        final Button button = (Button) getRootView().findViewById(R.id.deleteContainerButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                sendDeleteContainerRequest();
+            }
+        });
+    }
+    
     private void installGetAllButtonClickHandler() {
         final Button button = (Button) getRootView().findViewById(R.id.getAllButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +288,10 @@ public class LessonFileFragment extends HtmlFragment {
         });
     }
     
+    private String getContainerName() {
+        final EditText widget = (EditText) getRootView().findViewById(R.id.editContainerName);
+        return widget.getText().toString();        
+    }
     
 
     private class SingleMediaScanner implements MediaScannerConnectionClient 

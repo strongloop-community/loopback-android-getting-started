@@ -22,7 +22,7 @@
            android:text="@string/lessonFile_container_name" />
 
        <EditText
-           android:id="@+id/editText1"
+           android:id="@+id/editContainerName"
            android:layout_width="152dp"
            android:layout_height="wrap_content"
            android:layout_weight="1"
@@ -41,7 +41,15 @@
                android:textSize="14sp" />
 
            <Button
-               android:id="@+id/deleteButton"
+               android:id="@+id/getContainerButton"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="@string/lessonFile_get_container"
+               android:textSize="14sp" />
+
+           <Button
+               android:id="@+id/deleteContainerButton"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_weight="1"
@@ -71,6 +79,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/getFileButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lessonFile_get_file"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/uploadButton"
