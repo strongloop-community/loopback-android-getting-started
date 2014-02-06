@@ -61,10 +61,13 @@ public class LessonFileFragment extends HtmlFragment {
         // From that prototype, create a new File model. 
         File fileModel = fileRepo.createModel(null);
 
+        String containerName = getContainerName();
+        String fileName = getFileName();
+        
         // Set file properties
-        fileModel.setName("facekick.gif");
-        fileModel.setContainer("container1");
-        fileModel.setUrl(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() );
+        fileModel.setName(fileName);
+        fileModel.setContainer(containerName);
+        fileModel.setUrl(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString() );
 
         // Upload!
         fileModel.upload(new Model.Callback() {
@@ -76,7 +79,7 @@ public class LessonFileFragment extends HtmlFragment {
 
             @Override
             public void onError(Throwable t) {
-                Log.e(getTag(), "Cannot save File model.", t);
+                Log.e(getTag(), "Cannot upload file.", t);
                 showResult("Failed.");
             }
         });
@@ -102,7 +105,8 @@ public class LessonFileFragment extends HtmlFragment {
     
     private void sendGetFileRequest() {
   
-        containerModel.getFile( "f1.txt", new FileRepository.FileCallback() {
+        String fileName = getFileName();
+        containerModel.getFile( fileName, new FileRepository.FileCallback() {
 
             @Override
             public void onError(Throwable t) {
@@ -120,9 +124,11 @@ public class LessonFileFragment extends HtmlFragment {
     
     private void sendDownloadRequest() {
         
-        java.io.File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        java.io.File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         
-        fileRepo.download(storageDir.toString(), "container1", "facekick.jpg", 
+        String containerName = getContainerName();
+        String fileName = getFileName();
+        fileRepo.download(storageDir.toString(), containerName, fileName, 
                 new FileRepository.FileCallback()  {
 
             @Override
@@ -284,11 +290,18 @@ public class LessonFileFragment extends HtmlFragment {
     }
     
     private String getContainerName() {
-        final EditText widget = (EditText) getRootView().findViewById(R.id.editContainerName);
+        return getEditText(R.id.editContainerName);
+    }
+    
+    private String getFileName() {
+        return getEditText(R.id.editFileName);
+    }
+
+    private String getEditText(int resource_id) {
+        final EditText widget = (EditText) getRootView().findViewById(resource_id);
         return widget.getText().toString();        
     }
     
-
     private class SingleMediaScanner implements MediaScannerConnectionClient 
     { 
         private MediaScannerConnection mMs; 

@@ -76,6 +76,13 @@
            android:paddingTop="20dp"
            android:text="@string/lessonFile_upload_file" />
 
+       <EditText
+           android:id="@+id/editFileName"
+           android:layout_width="152dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:ems="10" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
