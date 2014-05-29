@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">LoopBack Guide Application</string>
+    <string name="title_activity_display_message">Intent test</string>
+    
     <string name="strongloop_logo">StrongLoop logo</string>
     <string name="hint_swipe_right_to_left">(Hint: Swipe right-to-left)</string>
     <string name="finale_content"><![CDATA[
@@ -36,6 +38,10 @@
         paying special attention to the <tt>NoteModel</tt> class and
         the <tt>LessonOneFragment.sendRequest</tt> method.
     ]]></string>
+    
+    <string name="add_container">Add container</string>
+    <string name="get_containers">Get containers</string>
+    <string name="get_files">Get files</string>
     <string name="lessonOne_user">User</string>
     <string name="lessonOne_user_hint">Me</string>
     <string name="lessonOne_comment">Comment</string>
@@ -48,6 +54,8 @@
     <string name="lessonThree_content"><![CDATA[
         <h3>Lesson Three: Don\'t Outgrow, Outbuild.</h3>
     ]]></string>
+    <string name="file_storage_content">
+        File storage content</string>
     <string name="warning_mapsNotAvailable">
         Your device does not support Google Maps.
         Locations will be displayed in a list. To get an interactive map view,

@@ -11,6 +11,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
+import com.strongloop.android.loopback.guide.lessons.LessonFiveFragment;
+import com.strongloop.android.loopback.guide.lessons.LessonFourFragment;
 import com.strongloop.android.loopback.guide.lessons.LessonOneFragment;
 import com.strongloop.android.loopback.guide.lessons.LessonThreeFragment;
 import com.strongloop.android.loopback.guide.lessons.LessonTwoFragment;
@@ -38,11 +40,12 @@ public class SlidePresenterActivity extends FragmentActivity {
         final List<Fragment> fragments = new Vector<Fragment>();
         fragments.add(new CoverFragment());
         fragments.add(new IntroductionFragment());
-
+        fragments.add(new LessonFiveFragment());
+        fragments.add(new LessonFourFragment());
         fragments.add(new LessonOneFragment());
         fragments.add(new LessonTwoFragment());
         fragments.add(new LessonThreeFragment());
-
+        
         fragments.add(new FinaleFragment());
         fragments.add(new BackFragment());
         return fragments;
