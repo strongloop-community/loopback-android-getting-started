@@ -5,12 +5,27 @@
     android:orientation="vertical"
     style="@style/ContentFrameStyle">
 
-    <TextView
+     <TextView
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-
+        
+    <Button
+        android:id="@+id/getContainers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/get_containers" />
+    
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textSize="6sp"
+        android:textStyle="bold"
+        android:layout_weight="0.5" />
+    
     <EditText
         android:id="@+id/containerName"
         android:layout_width="match_parent"
@@ -20,22 +35,9 @@
  
     <Button
 	    android:id="@+id/addContainer"
-	    android:layout_width="wrap_content"
+	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_gravity="center_horizontal"
-	    android:text="@string/add_container" />
-
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/getContainers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/get_containers" />
-
+	    android:text="@string/add_container" 
+	    style="?android:attr/buttonStyleSmall" />
+    
 </LinearLayout>

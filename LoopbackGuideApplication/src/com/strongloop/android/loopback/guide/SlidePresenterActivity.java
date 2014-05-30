@@ -40,12 +40,11 @@ public class SlidePresenterActivity extends FragmentActivity {
         final List<Fragment> fragments = new Vector<Fragment>();
         fragments.add(new CoverFragment());
         fragments.add(new IntroductionFragment());
-        fragments.add(new LessonFiveFragment());
-        fragments.add(new LessonFourFragment());
         fragments.add(new LessonOneFragment());
         fragments.add(new LessonTwoFragment());
         fragments.add(new LessonThreeFragment());
-        
+        fragments.add(new LessonFourFragment());
+        fragments.add(new LessonFiveFragment());
         fragments.add(new FinaleFragment());
         fragments.add(new BackFragment());
         return fragments;
