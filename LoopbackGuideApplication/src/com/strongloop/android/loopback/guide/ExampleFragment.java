@@ -9,7 +9,6 @@ import com.strongloop.android.loopback.ModelRepository;
 import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.guide.lessons.LessonFourFragment;
 import com.strongloop.android.loopback.guide.lessons.LessonFourFragment.ContainerModel;
-import com.strongloop.android.loopback.guide.lessons.LessonFourFragment.ContainerRepository;
 import com.strongloop.android.loopback.guide.lessons.LessonOneFragment;
 
 import android.app.Activity;

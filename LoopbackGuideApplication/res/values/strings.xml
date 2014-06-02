@@ -5,6 +5,7 @@
     <string name="title_activity_display_message">Intent test</string>
     
     <string name="strongloop_logo">StrongLoop logo</string>
+    <string name="login_hint">(Existing User? - Swipe right-to-left to Login)</string>
     <string name="hint_swipe_right_to_left">(Hint: Swipe right-to-left)</string>
     <string name="finale_content"><![CDATA[
         <h3>This is, obviously, just the beginning.</h3>
@@ -25,7 +26,7 @@
     ]]></string>
     <string name="introduction_content"><![CDATA[
         <h3>Welcome to the LoopBack Guide Application!</h3>
-        <p>The next three Lessons will teach you a little about LoopBack,
+        <p>The next five Lessons will teach you a little about LoopBack,
         a self-hosted and open-source mobile API tier from StrongLoop.</p>
         <p>Let\'s not waste any time with words. This is a simple
         <tt>Fragment</tt> - just swipe to the next page to get started.</p>
@@ -39,11 +40,21 @@
         the <tt>LessonOneFragment.sendRequest</tt> method.
     ]]></string>
     
+    <string name="login_content">Please login with an existing username and password</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="create_account">Save</string>
+    <string name="create_new_account">Don\'t have a login? No problem, create a new account here.</string>
+    
     <string name="add_container">Add container</string>
     <string name="get_containers">Get all containers</string>
-    <string name="get_files">Get files</string>
-    <string name="get_file">Get file</string>
+    
+    <string name="get_files">Get files in StrongLoop</string>
+    <string name="get_file">Get file StrongLoop.pdf</string>
     <string name="add_file">Add file</string>
+    <string name="delete_file">Delete file Hello.txt</string>
+    <string name="add_container_txt">Add a container</string>
     
     <string name="lessonOne_user">User</string>
     <string name="lessonOne_user_hint">Me</string>
@@ -51,18 +62,24 @@
     <string name="lessonOne_editComment_hint">My comment</string>
     <string name="lessonOne_reviewed">Reviewed</string>
     <string name="send_request">Send Request</string>
+    
     <string name="lessonTwo_content"><![CDATA[
         <h3>Lesson Two: Existing Data? No Problem.</h3>
     ]]></string>
     <string name="lessonThree_content"><![CDATA[
         <h3>Lesson Three: Don\'t Outgrow, Outbuild.</h3>
     ]]></string>
-    <string name="file_storage_content">
-        List of all the files in the container</string>
-    <string name="containers_content">
-        Fetch and Create containers</string>
+    <string name="lessonFive_content"><![CDATA[
+        <h3>Lesson Five: Files and Containers</h3>
+        <p>Fetch/Create/Delete files on a remote storage system
+    ]]></string>
+    <string name="lessonFour_content"><![CDATA[
+        <h3>Lesson Four: Files and Containers</h3>
+        <p>Fetch/Create containers on a remote storage system
+    ]]></string>
     <string name="warning_mapsNotAvailable">
         Your device does not support Google Maps.
         Locations will be displayed in a list. To get an interactive map view,
         use a real device supporting OpenGL ES 2.0. Any model made after 2010 should be fine.</string>
+   
 </resources>

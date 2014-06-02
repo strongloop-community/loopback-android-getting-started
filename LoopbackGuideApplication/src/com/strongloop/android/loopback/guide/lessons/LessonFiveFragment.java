@@ -21,6 +21,7 @@ import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.callbacks.ListCallback;
 import com.strongloop.android.loopback.callbacks.ObjectCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
+import com.strongloop.android.loopback.guide.DisplayFileList;
 import com.strongloop.android.loopback.guide.GuideApplication;
 import com.strongloop.android.loopback.guide.R;
 import com.strongloop.android.loopback.guide.util.HtmlFragment;
@@ -81,7 +82,9 @@ public class LessonFiveFragment extends HtmlFragment {
 		GuideApplication app = (GuideApplication)getActivity().getApplication();
         RestAdapter adapter = app.getLoopBackAdapter();
         ContainerRepository containerRepo = adapter.createRepository(ContainerRepository.class);
-        containerRepo.get("con1", new ObjectCallback<Container>() {
+        
+        
+        containerRepo.get("strongloop", new ObjectCallback<Container>() {
 			@Override
 			public void onSuccess(Container container) {
 				//Tried uploading file from local emulator FileSystem
@@ -91,12 +94,12 @@ public class LessonFiveFragment extends HtmlFragment {
 				//Uploading in-memory content
 				String fileName = "hello.txt";
 				byte[] content = null;
-				try {
-					content = "Hello world".getBytes("UTF-8");
-				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					try {
+						content = "Hello world".getBytes("UTF-8");
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				String contentType = "text/plain";
 				 
 				// same as container.getFileRepository().upload(fileName,...);
@@ -122,16 +125,16 @@ public class LessonFiveFragment extends HtmlFragment {
     }
     
 	
-	 private void removeFile() {
+	 private void deleteFile() {
 		 GuideApplication app = (GuideApplication)getActivity().getApplication();
 	        RestAdapter adapter = app.getLoopBackAdapter();
 	        ContainerRepository containerRepo = adapter.createRepository(ContainerRepository.class);
-	        containerRepo.get("con1", new ObjectCallback<Container>() {
+	        containerRepo.get("strongloop", new ObjectCallback<Container>() {
 				@Override
 				public void onSuccess(Container container) {
 					 
 					// same as container.getFileRepository().upload(fileName,...);
-					container.getFile("e", new ObjectCallback<File>() {
+					container.getFile("Hello.txt", new ObjectCallback<File>() {
 						@Override
 						public void onSuccess(File object) {
 							object.delete(new VoidCallback(){
@@ -170,12 +173,12 @@ public class LessonFiveFragment extends HtmlFragment {
 		 GuideApplication app = (GuideApplication)getActivity().getApplication();
 	        RestAdapter adapter = app.getLoopBackAdapter();
 	        ContainerRepository containerRepo = adapter.createRepository(ContainerRepository.class);
-	        containerRepo.get("con1", new ObjectCallback<Container>() {
+	        containerRepo.get("strongloop", new ObjectCallback<Container>() {
 				@Override
 				public void onSuccess(Container container) {
 					 
 					// same as container.getFileRepository().upload(fileName,...);
-					container.getFile("a", new ObjectCallback<File>() {
+					container.getFile("StrongLoop.pdf", new ObjectCallback<File>() {
 						@Override
 						public void onSuccess(File object) {
 //							java.io.File localFile = new java.io.File("path/to/file.txt");
@@ -209,11 +212,12 @@ public class LessonFiveFragment extends HtmlFragment {
 	
 	
     private void getFiles() {
+    	System.out.println("Files fetched successfully-");
         // 1. Grab the shared RestAdapter instance.
         GuideApplication app = (GuideApplication)getActivity().getApplication();
         RestAdapter adapter = app.getLoopBackAdapter();
         ContainerRepository containerRepo = adapter.createRepository(ContainerRepository.class);
-        containerRepo.get("con1", new ObjectCallback<Container>() {
+        containerRepo.get("strongloop", new ObjectCallback<Container>() {
 			@Override
 			public void onSuccess(Container container) {
 				container.getAllFiles(new ListCallback<File>(){
@@ -282,7 +286,7 @@ public class LessonFiveFragment extends HtmlFragment {
 
         list = (ListView)getRootView().findViewById(R.id.list);
 
-        setHtmlText(R.id.content, R.string.file_storage_content);
+        setHtmlText(R.id.content, R.string.lessonFive_content);
 
         installButtonClickHandler();
         return getRootView();
@@ -290,23 +294,33 @@ public class LessonFiveFragment extends HtmlFragment {
 
     private void installButtonClickHandler() {
     	System.out.print("Install Button");
-    	final Button button = (Button) getRootView().findViewById(R.id.addFile);
+    	
     	final Button button1 = (Button) getRootView().findViewById(R.id.getFiles);
     	final Button button2 = (Button) getRootView().findViewById(R.id.getFile);
-    	button2.setOnClickListener(new View.OnClickListener() {
+    	final Button button3 = (Button) getRootView().findViewById(R.id.deleteFile);
+    	final Button button4 = (Button) getRootView().findViewById(R.id.addFile);
+    	
+    	button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	removeFile();
+            	System.out.println("Files fetched successfully");
+            	getFiles();
             }
         });
-    	button.setOnClickListener(new View.OnClickListener() {
+    	button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	getFile();
+            }
+        });
+    	button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	deleteFile();
+            }
+        });
+    	button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	addFile();
             }
         });
-    	button1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	getFiles();
-            }
-        });
+    	
     }
 }

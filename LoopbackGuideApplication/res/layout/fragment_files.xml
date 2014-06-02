@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/fragment_files"
     style="@style/ContentFrameStyle">
 
     <TextView
@@ -11,19 +12,12 @@
         android:layout_height="wrap_content"
         />
     
-    <Button
-        android:id="@+id/getFile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/get_file" />
-    
  	<Button
         android:id="@+id/getFiles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/get_files" />
+       android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:text="@string/get_files" 
+		style="?android:attr/buttonStyleSmall" />
  	
     <ListView
         android:id="@+id/list"
@@ -33,10 +27,23 @@
     
  	<Button
         android:id="@+id/addFile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/add_file" />
-   
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:text="@string/add_file" 
+        style="?android:attr/buttonStyleSmall" />
+ 	    
+    <Button
+        android:id="@+id/getFile"
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:text="@string/get_file"
+        style="?android:attr/buttonStyleSmall" />
+    
+   <Button
+        android:id="@+id/deleteFile"
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:text="@string/delete_file" 
+		style="?android:attr/buttonStyleSmall" />
 
 </LinearLayout>

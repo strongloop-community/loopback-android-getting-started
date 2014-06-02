@@ -13,10 +13,10 @@
         
     <Button
         android:id="@+id/getContainers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/get_containers" />
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+        android:text="@string/get_containers" 
+        style="?android:attr/buttonStyleSmall" />
     
     <ListView
         android:id="@+id/list"
@@ -25,6 +25,12 @@
         android:textSize="6sp"
         android:textStyle="bold"
         android:layout_weight="0.5" />
+    
+    <TextView
+            style="@style/LabelStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_container_txt" />
     
     <EditText
         android:id="@+id/containerName"

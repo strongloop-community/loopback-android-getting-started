@@ -6,6 +6,8 @@ import java.util.Date;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +25,7 @@ import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.callbacks.ListCallback;
 import com.strongloop.android.loopback.callbacks.ObjectCallback;
 import com.strongloop.android.loopback.guide.DisplayFileList;
+import com.strongloop.android.loopback.guide.ExampleFragment;
 import com.strongloop.android.loopback.guide.GuideApplication;
 import com.strongloop.android.loopback.guide.R;
 import com.strongloop.android.loopback.guide.util.HtmlFragment;
@@ -107,9 +110,18 @@ public class LessonFourFragment extends HtmlFragment {
 					@Override
 		            public void onItemClick(AdapterView<?> parent, View view,
 		                                    int position, long id) {
-		            	Intent intent = new Intent(getActivity(), DisplayFileList.class);
-		            	intent.putExtra(ID, containerList.get(position).getName());
-		            	startActivity(intent);
+//		            	Intent intent = new Intent(getActivity(), DisplayFileList.class);
+//		            	intent.putExtra(ID, containerList.get(position).getName());
+//		            	startActivity(intent);
+		            	
+		            	FragmentManager fragmentManager = getFragmentManager();
+            			FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            			LessonFiveFragment fragment = new LessonFiveFragment();
+            			fragmentTransaction.add(fragment, "files");
+            			fragmentTransaction.replace(R.id.fragment_files, fragment);
+//            			fragmentTransaction.addToBackStack(null);
+//            			fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            			fragmentTransaction.commit();
 		            }
 		        });
 			}
@@ -167,7 +179,7 @@ public class LessonFourFragment extends HtmlFragment {
 
         list = (ListView)getRootView().findViewById(R.id.list);
 
-        setHtmlText(R.id.content, R.string.containers_content);
+        setHtmlText(R.id.content, R.string.lessonFour_content);
 
         installButtonClickHandler();
         return getRootView();

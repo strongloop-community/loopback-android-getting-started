@@ -13,21 +13,23 @@ import com.strongloop.android.loopback.guide.lessons.LessonFourFragment;
 import com.strongloop.android.loopback.guide.util.HtmlFragment;;
 
 public class DisplayFileList extends Activity {
-
+	public static String container_name = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
 
         // Get the message from the intent
         Intent intent = getIntent();
-        String message = intent.getStringExtra(LessonFourFragment.ID);
+        container_name = intent.getStringExtra(LessonFourFragment.ID);
         // Create the text view
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText(message);
-
+//        TextView textView = new TextView(this);
+//        textView.setTextSize(40);
+//        textView.setText(container_name);
+        setContentView(R.layout.fragment_files);
+        
+        
         // Set the text view as the activity layout
-        setContentView(textView);
+        //setContentView(textView);
     }
 
     @Override
