@@ -14,7 +14,7 @@ Contributing to `loopback-android-getting-started` is easy. In a few simple step
   * Adhere to code style outlined in the [Google C++ Style Guide][] and
     [Google Javascript Style Guide][].
 
-  * Sign the [Contributor License Agreement](https://cla.strongloop.com/strongloop/loopback-android-getting-started)
+  * Sign the [Contributor License Agreement](https://cla.strongloop.com/agreements/strongloop/loopback-android-getting-started)
 
   * Submit a pull request through Github.
 
