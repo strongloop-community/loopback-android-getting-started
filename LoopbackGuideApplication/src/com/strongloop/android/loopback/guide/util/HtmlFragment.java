@@ -2,6 +2,7 @@ package com.strongloop.android.loopback.guide.util;
 
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class HtmlFragment extends Fragment {
 	    TextView text = (TextView)getRootView().findViewById(textViewId);
 	    String htmlContent = getString(stringResourceId);
 	    text.setText(Html.fromHtml(htmlContent));
+		text.setMovementMethod(LinkMovementMethod.getInstance());
 	}
 
 }
