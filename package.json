@@ -1,0 +1,17 @@
+{
+  "name": "loopback-android-getting-started",
+  "version": "1.0.0",
+  "description": "LoopBack mobile application to show developers how to use LoopBack Open Node.js Mobile API Middle tier.",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strongloop/loopback-android-getting-started.git"
+  },
+  "license": {
+    "name": "Dual MIT/StrongLoop",
+    "url": "https://github.com/strongloop/loopback-android-getting-started/blob/master/LICENSE"
+  }
+}
