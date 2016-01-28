@@ -3,19 +3,19 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
+        classpath 'com.android.tools.build:gradle:1.5.+'
     }
 }
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 dependencies {
-    compile 'com.google.android.gms:play-services:4.0.30'
+    compile 'com.google.android.gms:play-services:8.4.0'
     compile fileTree(dir: 'libs', include: '*.jar', exclude: 'android-support-v4.jar')
 }
 
 android {
-    compileSdkVersion 18
-    buildToolsVersion "19.0.0"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     sourceSets {
         main {
@@ -28,8 +28,12 @@ android {
             assets.srcDirs = ['assets']
         }
 
+        defaultConfig {
+            multiDexEnabled true
+        }
+
         // Move the tests to tests/java, tests/res, etc...
-        instrumentTest.setRoot('tests')
+        androidTest.setRoot('tests')
 
         // Move the build types to build-types/<type>
         // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
@@ -39,5 +43,11 @@ android {
         // by a similar customization.
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
     }
 }
