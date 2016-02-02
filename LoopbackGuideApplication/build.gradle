@@ -3,7 +3,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
+<<<<<<< HEAD
+        classpath 'com.android.tools.build:gradle:1.5.+'
+=======
         classpath 'com.android.tools.build:gradle:2.10.0'
+>>>>>>> refs/remotes/origin/master
     }
 }
 apply plugin: 'com.android.application'
@@ -15,7 +19,11 @@ dependencies {
 
 android {
     compileSdkVersion 23
+<<<<<<< HEAD
+    buildToolsVersion "23.0.2"
+=======
     buildToolsVersion "23.0.0"
+>>>>>>> refs/remotes/origin/master
 
     sourceSets {
         main {
@@ -26,6 +34,10 @@ android {
             renderscript.srcDirs = ['src']
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
+        }
+
+        defaultConfig {
+            multiDexEnabled true
         }
 
         // Move the tests to tests/java, tests/res, etc...
