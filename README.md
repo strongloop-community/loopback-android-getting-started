@@ -41,3 +41,7 @@ LoopBack Open Node.js Mobile API Middle tier.
  1. Obtain an API key for Google Maps Android API v2
   [instructions](https://developers.google.com/maps/documentation/android/start#obtaining_an_api_key)
   and enter it into AndroidManifest.xml.
+
+---
+
+[More LoopBack examples](https://github.com/strongloop/loopback-example)
