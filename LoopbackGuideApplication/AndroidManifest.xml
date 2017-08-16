@@ -35,7 +35,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+        android:name="com.strongloop.android.loopback.guide.DisplayFileList"
+        android:label="@string/title_activity_display_message"
+        android:parentActivityName="com.strongloop.android.loopback.guide.lessons.LessonFourFragment" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.strongloop.android.loopback.guide.lessons.LessonFourFragment" />
+        </activity>
         <!--
           Enter your own API key for Google Maps Android API v2
           See this page for instructions how to obtains the API key:
@@ -51,7 +58,7 @@
          -->
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="4030500" />
 
     </application>
 
